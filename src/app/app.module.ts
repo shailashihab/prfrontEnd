@@ -18,7 +18,7 @@ import { ConfirmEqualValidatorDirective } from '../app/confirm-equal-validator.d
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { EmployerCrudComponent } from './employer-crud/employer-crud.component';
-import { MatIconModule } from '@angular/material/icon'
+
 
 
 @NgModule({
@@ -42,7 +42,7 @@ import { MatIconModule } from '@angular/material/icon'
     HttpClientModule,
     FormsModule,
     GooglePayButtonModule,
-    MatIconModule
+ 
 
   ],
   providers: [
