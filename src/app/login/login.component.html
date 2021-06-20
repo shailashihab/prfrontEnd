@@ -1,0 +1,98 @@
+<div class="row">    
+              
+    <div class="col-md-6 col-sm-5 text-center">
+      <!-- <a class="story-title" href="#"> -->
+        <br><br>
+        <h3>Don't have an account yet?<br>Signup</h3>
+      <!-- </a>     -->
+    </div>
+    <div class="col-md-4 col-sm-5">
+        <form action="" (ngSubmit)='f.form.valid && loginUser()' #f='ngForm' name="form" method="POST">
+          <fieldset class="form-group">
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="user_type" id="user_type_student" [(ngModel)]="loginData.type" value="student" checked required>Student
+                          </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="user_type" id="user_type_recruiter" [(ngModel)]="loginData.type" value="recruiter" required>Recruiter
+                          </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="user_type" id="user_type_admin" [(ngModel)]="loginData.type" value="admin" required>Admin
+                          </label>
+                      </div>
+                    </fieldset>
+            <label for="">Email</label>
+            <input class="form-control" type="email" 
+            [(ngModel)]="loginData.Email" name="Email"
+            #Email='ngModel' [ngClass]="{'is-invalid':f.submitted && Email.invalid}"
+              required pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}">
+             <div *ngIf="f.submitted && Email.invalid" class="errors">
+              <div *ngIf="Email.errors.required">
+                Email is required
+              </div>
+              <div *ngIf="Email.errors.pattern">
+               Please enter a valid email
+              </div>
+            </div>
+
+            <label for="">Password</label>
+            <input class="form-control" type="password" 
+            [(ngModel)]="loginData.Password" name="Password"
+            #Password='ngModel' [ngClass]="{'is-invalid':f.submitted && Password.invalid}" 
+             required minlength="6">
+            <div *ngIf="f.submitted && Password.invalid" class="errors">
+              <div *ngIf="Password.errors.required">
+                Password is required
+              </div>
+              <div *ngIf="Password.errors.minlength">
+                Password must be 6 characters long
+              </div>
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit">LOGIN</button>
+        </form> 
+        <br>              
+    </div>
+  </div>
+  <hr>
+
+  <!-- <form #login_form="ngForm" (ngSubmit)="login()">
+    <fieldset class="form-group">
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="user_type" id="user_type_student" [(ngModel)]="user.type" value="student" checked required>Student
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+        <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="user_type" id="user_type_recruiter" [(ngModel)]="user.type" value="recruiter" required>Recruiter
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+        <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="user_type" id="user_type_admin" [(ngModel)]="user.type" value="admin" required>Admin
+                    </label>
+                </div>
+              </fieldset>
+    <fieldset>
+      <div class="form-group">
+        <label for="username" class="form-label mt-4">Username</label>
+        <input type="text" class="form-control" 
+        id="username" name="username" placeholder="Username" 
+        [(ngModel)]="user.username" required minlength="2">
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label mt-4">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="user.password" required minlength="2">
+      </div>
+    </fieldset>
+    <div class="row pt-2">
+      <div class="col">
+        <button type="submit" class="btn btn-primary" [disabled]="login_form.form.invalid">Login</button>
+      </div>
+    </div>
+  </form> -->

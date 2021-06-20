@@ -1,0 +1,21 @@
+<div class="main container md-auto">
+
+<h2>Email Confirmation</h2>
+<div class="alert alert-primary" *ngIf="emailConfirmed">
+Email confirmed. Procced with paying for Entrance Test.
+<div>
+    <google-pay-button
+  environment="TEST"
+  buttonType="buy"
+  buttonColor="black"
+  [paymentRequest]="paymentRequest"
+  (loadpaymentdata)="onLoadPaymentData($event)"
+  (error)="onError($event)"
+  [paymentAuthorizedCallback]="onPaymentDataAuthorized"
+></google-pay-button>
+</div>
+</div>
+<div class="alert alert-danger" *ngIf="!emailConfirmed">
+Unable to confirm.
+</div>
+</div>

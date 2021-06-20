@@ -1,0 +1,50 @@
+<div class="container md-auto"> 
+  <h2>DETAILS OF THE STUDENTS ENROLLED</h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">StudentID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Contact Details</th>
+      <th scope="col">Qualification</th>
+      <th scope="col">Passout Year</th>
+      <th scope="col">SkillSet</th>
+      <th scope="col">Employment Status</th>
+      <th scope="col">Course Selected</th>
+      <th scope="col">Couse Year</th>
+      <th *ngIf="loggedIn" scope="col">Payment Status</th>
+      <th *ngIf="loggedIn" scope="col">Approval Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students" class="table-light">
+      <th scope="row"> {{student.studentID}} </th>
+      <td>{{student.Name}}</td>
+      <td>{{student.PhNumber}}</td>
+      <td>{{student.Email}}</td>
+      <td>{{student.qlfn}}</td>
+      <td>{{student.passyear}}</td>
+      <td>{{student.SkillSet}}</td>
+      <td>{{student.status}}</td>
+      <td>{{student.traincourse}}</td>
+      <td>{{student.year}}</td>
+      <td *ngIf="loggedIn">{{student.paymentStatus}}</td>
+      <td *ngIf="loggedIn">{{student.approvalStatus}}</td>
+      <td>    
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
+          <div class="dropdown-menu" >
+            <a class="dropdown-item" (click)="viewStudent(student._id)">View</a>
+            <a class="dropdown-item" *ngIf="loggedIn" (click)="editStudent(student._id)">Edit</a>
+            <a class="dropdown-item" *ngIf="loggedIn" (click)="deleteStudent(student._id)">Delete</a>
+            <a class="dropdown-item" *ngIf="loggedIn" (click)="approve(student._id,student.Email)">Approve</a>
+            <!-- <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a> -->
+          </div>
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+</div>

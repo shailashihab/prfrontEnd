@@ -1,0 +1,294 @@
+<div class="container md-auto">
+  <br><br><br><br>
+  <div class="col-md-6 ">
+    <form action="" (ngSubmit)='f.form.valid && onSubmit()' #f='ngForm' name="form" method="POST">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-bs-toggle="tab" href="#PersonalDetails">Personal Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#EducationalDetails">Educational Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#uploadPhoto">Upload Photo</a>
+        </li>
+      </ul>
+      <div id="content" class="tab-content">
+        <div class="tab-pane fade active show" id="PersonalDetails">
+          <div class="row">
+            <div class="col-6">
+              <label for="">UserName</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.Name" name="UserName"
+               #UserName='ngModel' [ngClass]="{'is-invalid':f.submitted && UserName.invalid}" 
+                required>
+               <div *ngIf="f.submitted && UserName.invalid" class="errors">
+                 <div *ngIf="UserName.errors.required">
+                  UserName is required
+                 </div>
+               </div>
+            </div>
+            <div class="col-6">
+              
+            <label for="">Phone Number</label>
+            <input class="form-control" type="text"
+             [(ngModel)]="studentProfile.PhNumber" name="PhNumber"
+             #PhNumber='ngModel' [ngClass]="{'is-invalid':f.submitted && PhNumber.invalid}"
+              required pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})">
+             <div *ngIf="f.submitted && PhNumber.invalid" class="errors">
+              <div *ngIf="PhNumber.errors.required">
+                PhNumber is required
+              </div>
+              <div *ngIf="PhNumber.errors.pattern">
+                Please Enter a valid phone number
+              </div>
+            </div>
+            </div>
+          </div>
+          <br>
+          <div class="col-12">
+            <label for="">Email</label>
+            <input class="form-control" type="email" 
+            [(ngModel)]="studentProfile.Email" name="Email" 
+            #Email='ngModel' [ngClass]="{'is-invalid':f.submitted && Email.invalid}"
+             required pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}">
+            <div *ngIf="f.submitted && Email.invalid" class="errors">
+              <div *ngIf="Email.errors.required">
+                Email is required
+              </div>
+              <div *ngIf="Email.errors.pattern">
+               Please enter a valid email
+              </div>
+            </div>
+          </div> 
+          <br>       
+          <div class="row">
+            <div class="col-6">
+              <label for="">Address Line1</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.add1" name="add1"
+               #add1='ngModel' [ngClass]="{'is-invalid':f.submitted && add1.invalid}" 
+                required>
+               <div *ngIf="f.submitted && add1.invalid" class="errors">
+                 <div *ngIf="add1.errors.required">
+                  add1 is required
+                 </div>
+               </div>
+            </div>
+            <div class="col-6">
+              <label for="">Address Line2</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.add2" name="add2"
+               #add2='ngModel' [ngClass]="{'is-invalid':f.submitted && add2.invalid}" 
+                required>
+               <div *ngIf="f.submitted && add2.invalid" class="errors">
+                 <div *ngIf="add2.errors.required">
+                   add2 is required
+                 </div>
+               </div>
+            </div>
+      
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-6">
+              <label for="">City</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.city" name="city"
+               #city='ngModel' [ngClass]="{'is-invalid':f.submitted && city.invalid}" 
+                required>
+               <div *ngIf="f.submitted && city.invalid" class="errors">
+                 <div *ngIf="city.errors.required">
+                  City is required
+                 </div>
+               </div>
+            </div>
+            <div class="col-6">
+              <label for="">State</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.state" name="add1"
+               #state='ngModel' [ngClass]="{'is-invalid':f.submitted && state.invalid}" 
+                required>
+               <div *ngIf="f.submitted && state.invalid" class="errors">
+                 <div *ngIf="state.errors.required">
+                  state is required
+                 </div>
+               </div>
+            </div>
+      
+      
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-6">
+              <label for="">Country</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.country" name="country"
+               #country='ngModel' [ngClass]="{'is-invalid':f.submitted && country.invalid}" 
+                required>
+               <div *ngIf="f.submitted && country.invalid" class="errors">
+                 <div *ngIf="country.errors.required">
+                   country is required
+                 </div>
+               </div>
+            </div>
+            <div class="col-6">
+              <label for="">Pincode</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.pin" name="pin"
+               #pin='ngModel' [ngClass]="{'is-invalid':f.submitted && pin.invalid}" 
+                required>
+               <div *ngIf="f.submitted && pin.invalid" class="errors">
+                 <div *ngIf="pin.errors.required">
+                  PINCODE is required
+                 </div>
+               </div>
+            </div>
+          </div>
+          <br>
+          
+        </div>
+        <div class="tab-pane fade" id="EducationalDetails">
+          <div class="row">
+            <div class="col-6">
+              <label for="">Highest degree</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.qlfn" name="qlfn"
+               #qlfn='ngModel' [ngClass]="{'is-invalid':f.submitted && qlfn.invalid}" 
+                required>
+               <div *ngIf="f.submitted && qlfn.invalid" class="errors">
+                 <div *ngIf="qlfn.errors.required">
+                  Qualification is required
+                 </div>
+               </div>
+            </div>
+            <div class="col-6">
+              <label for="">Graduation Year</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.passyear" name="passyear"
+               #passyear='ngModel' [ngClass]="{'is-invalid':f.submitted && passyear.invalid}" 
+                required>
+               <div *ngIf="f.submitted && passyear.invalid" class="errors">
+                 <div *ngIf="passyear.errors.required">
+                  passyear is required
+                 </div>
+               </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-6">
+              <label for="">Year of training</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.year" name="year"
+               #year='ngModel' [ngClass]="{'is-invalid':f.submitted && year.invalid}" 
+                required>
+               <div *ngIf="f.submitted && year.invalid" class="errors">
+                 <div *ngIf="year.errors.required">
+                  year is required
+                 </div>
+               </div>
+            </div>
+            <div class="col-6">
+              <label for="">Employment Status</label>
+              <input class="form-control" type="text" 
+              [(ngModel)]="studentProfile.status" name="status"
+               #status='ngModel' [ngClass]="{'is-invalid':f.submitted && status.invalid}" 
+                required>
+               <div *ngIf="f.submitted && status.invalid" class="errors">
+                 <div *ngIf="status.errors.required">
+                  status is required
+                 </div>
+               </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-9">
+              <label for="">Course</label>
+            
+                <select [(ngModel)]="selectedCourse.id" name="traincourse"
+                #traincourse='ngModel' class="form-select" id="exampleSelect1" (change)="onSelect($event.target.value)">
+                <option value="0">--Select--</option>
+                  <option *ngFor="let Course of Courses" [value]="Course.id">{{Course.course}}</option>
+                </select>
+               <div *ngIf="f.submitted && traincourse.invalid" class="errors">
+                 <div *ngIf="traincourse.errors.required">
+                  traincourse is required
+                 </div>
+               </div>
+            </div>
+            <div class="col-3">
+              <br>
+              <a href="https://ictkerala.org/courses/">Courses Details</a>
+            </div>
+            <div class="col-12">
+              <br>
+              <p>Fees of the Selected Course is&nbsp;</p>
+              <label for="">Fees</label>
+              <select name="fees" id="fees" class="form-select">
+                <option *ngIf='selectedCourse.id==0' value="0">--Select--</option>
+                <option value="fee">{{fee}}</option>
+              </select>
+            </div>
+            <!-- <mat-select [(ngModel)]="CountryCodes[97].dial_code" name="countryCode" required>
+              <mat-option *ngFor="let countryCode of CountryCodes" [value]="countryCode.dial_code">
+                {{countryCode.code}}&nbsp;{{countryCode.dial_code}}
+              </mat-option>
+            </mat-select> -->
+          </div>
+          <br>
+          <div class="col-12">
+            <label for="">SkillSet</label>
+            <textarea class="form-control" [(ngModel)]="studentProfile.SkillSet" name="SkillSet"
+            #SkillSet='ngModel' [ngClass]="{'is-invalid':f.submitted && SkillSet.invalid}" 
+             required id="exampleTextarea" rows="3"></textarea>
+             <div *ngIf="f.submitted && SkillSet.invalid" class="errors">
+               <div *ngIf="SkillSet.errors.required">
+                SkillSet is required
+               </div>
+             </div>
+          </div>
+          <br>
+          <div *ngIf="loggedIn && isView" class="col-6">
+            <label for="">Approval Status</label>
+            <input class="form-control" type="text" 
+            [(ngModel)]="studentProfile.approvalStatus" name="approvalStatus"
+             #approvalStatus='ngModel'>
+          </div>
+          <br>
+          <div *ngIf="loggedIn && isView" class="col-6">
+            <label for="">Payment Status</label>
+            <input class="form-control" type="text" 
+            [(ngModel)]="studentProfile.paymentStatus" name="paymentStatus"
+             #paymentStatus='ngModel' >
+          </div>
+  
+        </div>
+        <div class="tab-pane fade " id="uploadPhoto">
+          <div class="row">    
+            <br>
+            <div class="col-md-5 col-sm-3 text-center">
+              <br>
+              <br>
+                <img alt="" [src]="studentProfile.photo"  style="width:250px;height:250px; border-radius:50%;">
+              <br><br>
+              <label for="">Image</label>
+              <input type="file" name="photo" [(ngModel)]="studentProfile.photo" (change)="PickedImg($event)" accept="image/*">
+              <br><br>
+              <br><br>
+              <button class="btn btn-primary"  type="submit">SAVE DETAILS</button>
+            </div>
+            <div class="col-md-5 col-sm-9">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </form>
+  
+  
+    <br>
+  </div>
+</div>
+

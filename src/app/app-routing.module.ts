@@ -1,7 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AuthGuard } from './auth.guard';
+import { EmployerHomeComponent } from './employer-home/employer-home.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { StudentHomeComponent } from './student-home/student-home.component';
+import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:'', component:WelcomeComponent},
+  {path:'signup', component:SignupComponent},
+  {path:'login', component:LoginComponent},
+  {path:'adminhome', component:AdminHomeComponent},
+  {path:'employer/:scn/:title', component:EmployerHomeComponent},
+  {path:'studenthome/:id/editprofile', component:StudentHomeComponent},
+  {path:'profile/:id/:scn/:title', component:StudentHomeComponent},
+  {path:'profile/:scn/:title', component:StudentHomeComponent,canActivate:[AuthGuard]},
+  {path:'employerhome/:id/:scn/:title', component:EmployerHomeComponent},
+  {path:'accountactivate', component:StudentProfileComponent},
+  {path:'accountactivate/:token', component:StudentProfileComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
