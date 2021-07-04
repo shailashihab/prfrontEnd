@@ -22,6 +22,8 @@ export class StudentdataModel{
         public photo:String | ArrayBuffer,
         public fees:String,
         public approvalStatus:String,
-        public paymentStatus:String
+        public paymentStatus:String,
+        public techtraining:String,
+        public percentage:Number
     ){}
 }

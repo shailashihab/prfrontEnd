@@ -1,12 +1,11 @@
-<div class="row">    
-              
-    <div class="col-md-6 col-sm-5 text-center">
+<div class="row" style="justify-content: center; text-align: center; margin-top: 10%;">                 
+    <div class="col-md-7 col-sm-5 text-center">
       <!-- <a class="story-title" href="#"> -->
         <br><br>
         <h3>Don't have an account yet?<br>Signup</h3>
       <!-- </a>     -->
     </div>
-    <div class="col-md-4 col-sm-5">
+    <div class="col-md-3 col-sm-5">
         <form action="" (ngSubmit)='f.form.valid && loginUser()' #f='ngForm' name="form" method="POST">
           <fieldset class="form-group">
             <div class="form-check form-check-inline">
@@ -25,7 +24,7 @@
                           </label>
                       </div>
                     </fieldset>
-            <label for="">Email</label>
+            <label style="float: left;" for="">Email</label>
             <input class="form-control" type="email" 
             [(ngModel)]="loginData.Email" name="Email"
             #Email='ngModel' [ngClass]="{'is-invalid':f.submitted && Email.invalid}"
@@ -39,7 +38,7 @@
               </div>
             </div>
 
-            <label for="">Password</label>
+            <label style="float: left;" for="">Password</label>
             <input class="form-control" type="password" 
             [(ngModel)]="loginData.Password" name="Password"
             #Password='ngModel' [ngClass]="{'is-invalid':f.submitted && Password.invalid}" 
@@ -57,8 +56,7 @@
         </form> 
         <br>              
     </div>
-  </div>
-  <hr>
+</div>
 
   <!-- <form #login_form="ngForm" (ngSubmit)="login()">
     <fieldset class="form-group">

@@ -1,1 +1,59 @@
-<p>employer-home works!</p>
+<div class="container mb-5">
+    <div class="mat-elevation-z8">
+        <table class="table table-hover" mat-table [dataSource]="dataSource" matSort multiTemplateDataRows class="mat-elevation-z8">
+            <ng-container matColumnDef="EmployerID">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>EmployerID </th>
+              <td mat-cell *matCellDef="let element" > {{element.EmployerID}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.Name}}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="PhNumber">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> PhNumber </th>
+                <td mat-cell *matCellDef="let element" >{{element.PhNumber}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+              <td mat-cell *matCellDef="let element" >{{element.Email}} </td>
+          </ng-container>
+          <ng-container matColumnDef="department">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> department </th>
+            <td mat-cell *matCellDef="let element" >{{element.department}} </td>
+          </ng-container>
+
+            <ng-container *ngIf="loggedIn" matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon [ngStyle]="{'color':'#008cba'}">more_vert</mat-icon>
+                      </button>
+  
+                      <mat-menu #menu="matMenu">
+                        <button *ngIf="loggedIn" mat-menu-item (click)="editEmployer(element._id)">
+                          <mat-icon [ngStyle]="{'color':'#008cba'}">edit</mat-icon>
+                          <span>Edit</span>
+                        </button>
+  
+                        <!-- <button *ngIf="loggedIn()" mat-menu-item (click)=openDialog(element)>
+                          <mat-icon [ngStyle]="{'color':'#f04124'}">delete</mat-icon>
+                          <span>Delete</span>
+                        </button> -->
+                        <button *ngIf="loggedIn" mat-menu-item (click)=deleteEmployer(element._id)>
+                          <mat-icon [ngStyle]="{'color':'#f04124'}">delete</mat-icon>
+                          <span>Delete</span>
+                        </button>
+                      </mat-menu>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row" ></tr>
+            <!-- <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr> -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No Data </td>
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>

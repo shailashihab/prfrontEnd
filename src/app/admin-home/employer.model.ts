@@ -7,7 +7,6 @@ export class employerDataModel{
         public Email:String,
         public Password:String,
         public Password2:String,
-        public photo:String | ArrayBuffer,
         public department:String
     ){}
 }

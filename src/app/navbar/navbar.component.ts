@@ -33,4 +33,7 @@ export class NavbarComponent implements OnInit {
   addEmployer(){
     this._router.navigate([`employer/`,'add','admin'])
   }
+  EmployerList(){
+    this._router.navigate([`employerlist`])
+  }
 }

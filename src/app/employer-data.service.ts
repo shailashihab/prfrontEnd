@@ -16,18 +16,18 @@ export class EmployerDataService {
     return this.http.post<any>('http://localhost:4000/login',{'loggedInUser':loggedinUser})
   }
   getEmployers(){
-
+    return this.http.get('http://localhost:4000/employers');
   }
   getEmployer(id){
-
+    return this.http.get(`http://localhost:4000/employers/${id}`);
   }
-  editEmployer(id){
-
+  editEmployer(id, adminProfile){
+    return this.http.put(`http://localhost:4000/admin/editEmployer/${id}`,{'EditProfile':adminProfile})
   }
   addEmployer(employerData){
-
+    return this.http.post<any>('http://localhost:4000/admin/addEmployer',{'EmployerData':employerData})
   }
   deleteEmployer(id){
-    
+    return this.http.delete(`http://localhost:4000/admin/deleteEmployer/${id}`);    
   }
 }

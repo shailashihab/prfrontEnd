@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">    
+  <div class="row" style="margin-top: 5%;">    
     <br>
     <div class="col-md-5 col-sm-3 text-center">    </div>
     <div class="col-md-4 col-sm-9">
@@ -91,7 +91,7 @@
       <a class="nav-link active" data-bs-toggle="tab" href="#student">Register as Student</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#recruiter">Register as Recruiter</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#recruiter">Register as Employer</a>
     </li>
   </ul>
   <div id="content" class="tab-content">
@@ -100,6 +100,7 @@
       <div class="bs-docs-section">
         <div class="row">
           <div class="col-12">
+            <br>
             <div class="bs-component">
               <form action="" (ngSubmit)='f.form.valid && newUser()' #f='ngForm' name="form" method="POST">
                 <label for="">UserName</label>
@@ -184,6 +185,7 @@
         <div class="row">
           <div class="col-12">
             <div class="bs-component">
+              <br>
               <form action="" (ngSubmit)='fr.form.valid && newEmployer()' #fr='ngForm' name="form" method="POST">
                 <label for="">UserName</label>
                 <input class="form-control" type="text" 
@@ -195,6 +197,28 @@
                     UserName is required
                    </div>
                  </div>
+
+                 <label for="">EmployerID</label>
+                 <input class="form-control" type="text" 
+                 [(ngModel)]="employerData.EmployerID" name="EmployerID"
+                  #EmployerID='ngModel' [ngClass]="{'is-invalid':fr.submitted && EmployerID.invalid}" 
+                   required>
+                  <div *ngIf="fr.submitted && EmployerID.invalid" class="errors">
+                    <div *ngIf="EmployerID.errors.required">
+                      EmployerID is required
+                    </div>
+                  </div>
+
+                  <label for="">Department</label>
+                  <input class="form-control" type="text" 
+                  [(ngModel)]="employerData.department" name="department"
+                   #department='ngModel' [ngClass]="{'is-invalid':fr.submitted && department.invalid}" 
+                    required>
+                   <div *ngIf="f.submitted && department.invalid" class="errors">
+                     <div *ngIf="department.errors.required">
+                      Department is required
+                     </div>
+                   </div>
     
                 <label for="">Phone Number</label>
                 <input class="form-control" type="text"
@@ -261,7 +285,7 @@
       </div>
       <!-- END recruiter registration form -->
     </div>
-  <hr>
+
 </div>
 </div>
 </div>

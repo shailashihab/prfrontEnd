@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SignupDataService } from '../signup-data.service';
@@ -13,6 +14,7 @@ import { StudentdataModel } from './student.model';
   styleUrls: ['./student-home.component.css']
 })
 export class StudentHomeComponent implements OnInit {
+  isLinear = false;
   Courses:Course[]=[
          {
       "id":1,
@@ -33,10 +35,11 @@ export class StudentHomeComponent implements OnInit {
   fee:String;
   trcourse:String;
   selectedCourse:Course = new Course(0, 'Course0')
-studentProfile=new StudentdataModel(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+studentProfile=new StudentdataModel(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
   constructor( 
     private rote:ActivatedRoute, 
     private router:Router,  
+    private location:Location,
     private studentDB:StudentDataService,
     private ref:ChangeDetectorRef,
     private _auth:SignupDataService) { 
@@ -66,6 +69,8 @@ studentProfile=new StudentdataModel(null, null, null, null, null, null, null, nu
     isStudent:Boolean=false;
     isAdmin:Boolean=false;
     isView:Boolean=false;
+    courseEdit:Boolean=true;
+    public isChecked = false;
   file:File;
   fileName:string="No file selected";
   fileSize:Number;
@@ -105,10 +110,18 @@ studentProfile=new StudentdataModel(null, null, null, null, null, null, null, nu
     }
   }
 
+  editCourse(){
+    this.courseEdit = !this.courseEdit
+  }
+
+  onBack(){
+    this.location.back();
+  }
+
   ngOnInit(): void {
 
     const id = this.rote.snapshot.paramMap.get('id');
-    if(this.scenario=='edit'){
+    if(this.scenario=='edit' || this.scenario == 'view'){
       this.studentDB.getUser(id)
       .subscribe(data=>{
         if(data){
@@ -125,21 +138,15 @@ studentProfile=new StudentdataModel(null, null, null, null, null, null, null, nu
     setInterval(() => {
       this.ref.detectChanges()
     }, 500);
-    console.log(this.studentProfile);
-    // var myDate = new Date();
-    // var varID = myDate.getHours() + "" + myDate.getMinutes() + "" + myDate.getSeconds() + "" + myDate.getMilliseconds();
-    // if (varID.Length > 15) {
-    //     varID = varID.substr(0, 15);
-    // }
-    // return varID;
     if(this.isStudent==true && this.scenario=='edit'){
       console.log("Student edit");
       var myDate = new Date();
       var autoID = myDate.getHours() + "" + myDate.getMinutes() + "" + myDate.getSeconds() + "" + myDate.getMilliseconds();
-      if( autoID.length>15 ){
-        autoID = autoID.substr(0,15);
+      if( autoID.length>10 ){
+        autoID = autoID.substr(0,10);
       }
-      this.studentProfile.studentID = autoID;
+      var StautoID="ST-"+autoID
+      this.studentProfile.studentID = StautoID;
       this.studentDB.toApproval(this.studentProfile).subscribe(data=>{
         console.log(data);
         alert("Student Profile Created Successfully,your studentID is"+autoID+" Please check your registered mail for confirmation.");
@@ -153,10 +160,11 @@ studentProfile=new StudentdataModel(null, null, null, null, null, null, null, nu
     }else if(this.isAdmin==true && this.scenario=='add'){
       var myDate = new Date();
       var autoID = myDate.getHours() + "" + myDate.getMinutes() + "" + myDate.getSeconds() + "" + myDate.getMilliseconds();
-      if( autoID.length>15 ){
-        autoID = autoID.substr(0,15);
+      if( autoID.length>10 ){
+        autoID = autoID.substr(0,10);
       }
-      this.studentProfile.studentID = autoID;
+      var StautoID="ST-"+autoID
+      this.studentProfile.studentID = StautoID;
       this.studentDB.addStudent(this.studentProfile).subscribe((data)=>{
         console.log(data);
         alert("Student Details added Successfully");

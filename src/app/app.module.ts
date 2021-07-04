@@ -18,8 +18,24 @@ import { ConfirmEqualValidatorDirective } from '../app/confirm-equal-validator.d
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { EmployerCrudComponent } from './employer-crud/employer-crud.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -42,8 +58,24 @@ import { EmployerCrudComponent } from './employer-crud/employer-crud.component';
     HttpClientModule,
     FormsModule,
     GooglePayButtonModule,
- 
-
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatCardModule,
+    MatDividerModule,
+    MatStepperModule,
+    MatListModule
   ],
   providers: [
     {

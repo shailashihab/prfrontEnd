@@ -14,8 +14,8 @@ import { SignUpModel } from './signup.model';
 })
 export class SignupComponent implements OnInit {
   signupData = new SignUpModel(null,null,null,null,null);
-  studentData = new StudentdataModel(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
-  employerData = new employerDataModel(null, null, null, null, null, null, null, null, null)
+  studentData = new StudentdataModel(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+  employerData = new employerDataModel(null, null, null, null, null, null, null, null)
   constructor( private db:SignupDataService, private router:Router, private studentDB:StudentDataService,
     private employerDB:EmployerDataService) { }
 
