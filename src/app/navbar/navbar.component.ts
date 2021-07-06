@@ -8,6 +8,7 @@ import { SignupDataService } from '../signup-data.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  loginCheck:boolean=false;
   
   constructor(private _router:Router, private _auth:SignupDataService, private ref:ChangeDetectorRef) { 
     setInterval(() => {
@@ -18,9 +19,9 @@ export class NavbarComponent implements OnInit {
   loggedIn = this._auth.loggedIn();
   
   ngOnInit(): void {
-    setTimeout(() => {
-      this.ref.detectChanges()
-    }, 500)
+    setInterval(()=>{
+      this.loggedIn
+    },100)
   }
   log_out(){
 		localStorage.removeItem('token');

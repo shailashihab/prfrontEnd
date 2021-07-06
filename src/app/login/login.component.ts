@@ -30,7 +30,9 @@ export class LoginComponent implements OnInit {
         if(res===null){
           alert("no user")
         }else{
-          this.route.navigate(['adminhome']);
+          this.route.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+            this.route.navigate(['adminhome']);
+          })          
         }
       })
     }else if(this.loginData.type=='student'){
@@ -38,7 +40,9 @@ export class LoginComponent implements OnInit {
         if(res===null){
           alert("no user")
         }else{
-          this.route.navigate([`/profile/${res._id}`,'edit','student']);
+          this.route.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+            this.route.navigate([`/profile/${res._id}`,'edit','student']);
+          })
         }
       })
     }else{
@@ -46,7 +50,9 @@ export class LoginComponent implements OnInit {
         if(res.token){
               localStorage.setItem('token', res.token);
               console.log('saved');
-              this.route.navigate(['adminhome']);
+              this.route.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+                this.route.navigate(['adminhome']);
+              })
             }
       })
     }

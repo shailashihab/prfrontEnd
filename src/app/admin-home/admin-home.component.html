@@ -221,7 +221,7 @@
                         <span>Edit</span>
                       </button>
                       <button mat-menu-item (click)="viewStudent(element._id)">
-                        <mat-icon [ngStyle]="{'color':'#008cba'}">view</mat-icon>
+                        <mat-icon [ngStyle]="{'color':'#008cba'}">visibility</mat-icon>
                         <span>view</span>
                       </button>
 
@@ -229,7 +229,7 @@
                         <mat-icon [ngStyle]="{'color':'#f04124'}">delete</mat-icon>
                         <span>Delete</span>
                       </button>
-                      <button *ngIf="loggedIn" mat-menu-item (click)="approve(student._id,student.Email)">
+                      <button *ngIf="loggedIn" mat-menu-item (click)="approve(element._id,element.Email)">
                         <mat-icon [ngStyle]="{'color':'#f04124'}">pending_actions</mat-icon>
                         <span>Approve</span>
                       </button>

@@ -1,1 +1,89 @@
-<p>employer-crud works!</p>
+<div class="container">
+    <div class="row" style="margin-top: 5%;">    
+      <br>
+        <div class="col-md-5 col-sm-3 text-center">  
+          
+        </div>
+      <div class="col-md-4 col-sm-9">     
+     
+     <!-- Recruiter Registration Form -->
+      <div class="bs-docs-section">
+        <div class="row">
+          <div class="col-12">
+            <div class="bs-component">
+              <br>
+              <form action="" (ngSubmit)='fr.form.valid && newEmployer()' #fr='ngForm' name="form" method="POST">
+                <label for="">UserName</label>
+                <input class="form-control" type="text" 
+                [(ngModel)]="employerData.Name" name="UserName"
+                 #UserName='ngModel' [ngClass]="{'is-invalid':fr.submitted && UserName.invalid}" 
+                  required>
+                 <div *ngIf="fr.submitted && UserName.invalid" class="errors">
+                   <div *ngIf="UserName.errors.required">
+                    UserName is required
+                   </div>
+                 </div>
+
+                 <label for="">EmployerID</label>
+                 <input class="form-control" type="text" 
+                 [(ngModel)]="employerData.EmployerID" name="EmployerID"
+                  #EmployerID='ngModel' [ngClass]="{'is-invalid':fr.submitted && EmployerID.invalid}" 
+                   required>
+                  <div *ngIf="fr.submitted && EmployerID.invalid" class="errors">
+                    <div *ngIf="EmployerID.errors.required">
+                      EmployerID is required
+                    </div>
+                  </div>
+
+                  <label for="">Department</label>
+                  <input class="form-control" type="text" 
+                  [(ngModel)]="employerData.department" name="department"
+                   #department='ngModel' [ngClass]="{'is-invalid':fr.submitted && department.invalid}" 
+                    required>
+                   <div *ngIf="fr.submitted && department.invalid" class="errors">
+                     <div *ngIf="department.errors.required">
+                      Department is required
+                     </div>
+                   </div>
+    
+                <label for="">Phone Number</label>
+                <input class="form-control" type="text"
+                 [(ngModel)]="employerData.PhNumber" name="PhNumber"
+                 #PhNumber='ngModel' [ngClass]="{'is-invalid':fr.submitted && PhNumber.invalid}"
+                  required pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})">
+                 <div *ngIf="fr.submitted && PhNumber.invalid" class="errors">
+                  <div *ngIf="PhNumber.errors.required">
+                    PhNumber is required
+                  </div>
+                  <div *ngIf="PhNumber.errors.pattern">
+                    Please Enter a valid phone number
+                  </div>
+                </div>
+    
+                <label for="">Email</label>
+                <input class="form-control" type="email" 
+                [(ngModel)]="employerData.Email" name="Email" 
+                #Email='ngModel' [ngClass]="{'is-invalid':fr.submitted && Email.invalid}"
+                 required pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}">
+                <div *ngIf="fr.submitted && Email.invalid" class="errors">
+                  <div *ngIf="Email.errors.required">
+                    Email is required
+                  </div>
+                  <div *ngIf="Email.errors.pattern">
+                   Please enter a valid email
+                  </div>
+                </div>
+                <br>
+
+    
+                <button *ngIf="isAddmode" class="btn btn-primary" type="submit">ADD EMPLOYER</button>
+                <button *ngIf="!isAddmode" class="btn btn-primary" type="submit">SAVE CHANGES</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END recruiter registration form -->
+    </div>
+    </div>
+</div>

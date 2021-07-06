@@ -179,10 +179,19 @@
               </div>
               <div class="col-6">
                 <label for="">Employment Status</label>
-                <input [disabled]="isView" class="form-control" type="text" 
+                <select  [disabled]="isView" [(ngModel)]="studentProfile.status" name="status"
+                #status='ngModel' class="form-select" (change)="onSelect($event.target.value)"  [ngClass]="{'is-invalid':f.submitted && status.invalid}" 
+                required>
+                <option value="0">--Select--</option>
+                  <option>Not Employed</option>
+                  <option>Employed</option>
+                </select>
+
+
+                <!-- <input [disabled]="isView" class="form-control" type="text" 
                 [(ngModel)]="studentProfile.status" name="status"
                 #status='ngModel' [ngClass]="{'is-invalid':f.submitted && status.invalid}" 
-                  required>
+                  required> -->
                 <div *ngIf="f.submitted && status.invalid" class="errors">
                   <div *ngIf="status.errors.required">
                     status is required

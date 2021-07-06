@@ -1,9 +1,10 @@
 <div class="row" style="justify-content: center; text-align: center; margin-top: 10%;">                 
-    <div class="col-md-7 col-sm-5 text-center">
-      <!-- <a class="story-title" href="#"> -->
-        <br><br>
-        <h3>Don't have an account yet?<br>Signup</h3>
-      <!-- </a>     -->
+    <div class="col-md-7 col-sm-5 text-center">  
+      <br><br>
+      <h3>Don't have an account yet?</h3>
+      <a style="text-decoration: none;" class="story-title" routerLink="signup">
+        <h3>Signup</h3>
+      </a>    
     </div>
     <div class="col-md-3 col-sm-5">
         <form action="" (ngSubmit)='f.form.valid && loginUser()' #f='ngForm' name="form" method="POST">
@@ -15,7 +16,7 @@
                       </div>
                       <div class="form-check form-check-inline">
               <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="user_type" id="user_type_recruiter" [(ngModel)]="loginData.type" value="recruiter" required>Recruiter
+                            <input type="radio" class="form-check-input" name="user_type" id="user_type_recruiter" [(ngModel)]="loginData.type" value="recruiter" required>Employer
                           </label>
                       </div>
                       <div class="form-check form-check-inline">

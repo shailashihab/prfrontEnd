@@ -21,11 +21,11 @@ export class EmployerDataService {
   getEmployer(id){
     return this.http.get(`http://localhost:4000/employers/${id}`);
   }
-  editEmployer(id, adminProfile){
-    return this.http.put(`http://localhost:4000/admin/editEmployer/${id}`,{'EditProfile':adminProfile})
+  editEmployer(id,admineditProfile){
+    return this.http.put(`http://localhost:4000/admin/ediEmployer/${id}`,{'EditedProfile':admineditProfile})
   }
   addEmployer(employerData){
-    return this.http.post<any>('http://localhost:4000/admin/addEmployer',{'EmployerData':employerData})
+    return this.http.post<any>(`http://localhost:4000/admin/editEmployer`,{'EmployerData':employerData})
   }
   deleteEmployer(id){
     return this.http.delete(`http://localhost:4000/admin/deleteEmployer/${id}`);    
